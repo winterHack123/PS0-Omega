@@ -9,38 +9,59 @@
 
 <!-- npx tailwindcss -i ./src/input.css -o ./dist/emailstyle.css --watch -->
 
-<body class="bg-gray-100 h-screen flex flex-col items-center justify-center">
-    <div class="bg-white p-6 rounded-lg shadow-lg">
-        <h1 class="text-2xl font-semibold text-gray-800 mb-4">Voice-Enabled Email Sender</h1>
-        <div id="output" class="text-lg text-gray-600 mb-4">Instructions will appear here...</div>
-        <button id="startButton" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300">Start Voice Command</button>
+<body class="bg-gray-200 h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded shadow-md max-w-md mx-auto">
+        <h1 class="text-2xl font-semibold mb-4">Send Mail using Voice</h1>
+        <div class="mb-4">
+            <label for="senderEmail" class="block text-sm font-medium text-gray-700">Sender's Email Address</label>
+            <input type="text" id="senderEmail" class="w-full py-2 px-3 border rounded outline-none" placeholder="Your Email Address">
+        </div>
+        <div class="mb-4">
+            <label for="email" class="block text-sm font-medium text-gray-700">Recipient's Email Address</label>
+            <input type="text" id="email" class="w-full py-2 px-3 border rounded outline-none" placeholder="Recipient's Email Address">
+        </div>
+        <div class="mb-4">
+            <label for="description" class="block text-sm font-medium text-gray-700">Email Description</label>
+            <input type="text" id="description" class="w-full py-2 px-3 border rounded outline-none" placeholder="Email Description">
+        </div>
+        <button id="voice-command-button" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none">
+            Start Voice
+        </button>
+        <button id="send-button" class="w-full mt-4 bg-green-500 text-white py-3 px-4 rounded hover:bg-green-600 focus:outline-none">
+            Send Mail
+        </button>
     </div>
 
     <script>
-        const startButton = document.getElementById('startButton');
-        const output = document.getElementById('output');
+        const senderEmailInput = document.getElementById('senderEmail');
+        const emailInput = document.getElementById('email');
+        const descriptionInput = document.getElementById('description');
+        const voiceCommandButton = document.getElementById('voice-command-button');
+        const sendButton = document.getElementById('send-button');
 
-        // Initialize the speech recognition object
-        const recognition = new window.SpeechRecognition();
+        voiceCommandButton.addEventListener('click', startVoiceRecognition);
 
-        recognition.onresult = (event) => {
-            const transcript = event.results[0][0].transcript;
-            output.innerHTML = `You said: ${transcript}`;
-            handleVoiceCommand(transcript);
-        };
+        // Function to start voice recognition
+        function startVoiceRecognition() {
+            const recognition = new webkitSpeechRecognition();
+            recognition.onresult = function(event) {
+                const transcript = event.results[0][0].transcript;
+                emailInput.value = transcript;
+            };
 
-        startButton.addEventListener('click', () => {
             recognition.start();
-            output.innerHTML = 'Listening...';
-        });
+        }
 
-        function handleVoiceCommand(command) {
-            // Add logic to interpret and act on voice commands here
-            // For this example, we will simply display the recognized command.
-            console.log(`Voice Command: ${command}`);
+        sendButton.addEventListener('click', sendMail);
+
+        // Function to send the mail (you would need to implement this)
+        function sendMail() {
+            const senderEmail = senderEmailInput.value;
+            const recipientEmail = emailInput.value;
+            const emailDescription = descriptionInput.value;
+            // Implement sending mail logic here
         }
     </script>
-</body>
 
 
 </html>
