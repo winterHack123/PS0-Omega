@@ -11,15 +11,66 @@ def index():
     <html>
     <body>
         <h1>Click the button to listen the audio book:</h1>
-
-
-
-        
-        <button onclick="runScript()">Object Oriented Programming</button>
+         <button onclick="runScript()">Object Oriented Programming</button>
         <button onclick="runScript2()">Java Script</button>
+        <div class="container">
+        <input type="file" id="pdfUploader" accept=".pdf">
+        <button onclick="runScript()">Run</button>
+    </div>
+    <div id="output"></div>
 
 
-               <style>
+    <style>
+
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+input[type="file"] {
+    margin-right: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#output {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+
+.button-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 300px; /* Set your desired width */
+    height: 50px; /* Set your desired height */
+    border: 1px solid #000; /* Optional: Add border for visual separation */
+}
+
+button {
+    width: 100%; /* Make buttons take equal width inside the container */
+}
+
+
+
+
+
           h1 {
     font-family: Arial, sans-serif;
     text-align: center;
