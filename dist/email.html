@@ -14,24 +14,28 @@
         <div class="mb-4">
             <label for="senderEmail" class="block text-sm font-medium text-gray-700">Sender's Email Address</label>
             <input type="text" id="senderEmail" class="w-full py-2 px-3 border rounded outline-none" placeholder="Your Email Address"  onmouseover="speakElementDescription(this)" >
-            <button id="sender-voice-command" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none" onmouseover="speakElementDescription(this)" >Voice</button>
+            <button aria-label="button" id="sender-voice-command" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none" onmouseover="speakElementDescription(this)" >Voice</button>
         </div>
         <div class="mb-4">
             <label for="email" class="block text-sm font-medium text-gray-700">Recipient's Email Address</label>
             <input type="text" id="email" class="w-full py-2 px-3 border rounded outline-none" placeholder="Recipient's Email Address">
-            <button id="email-voice-command" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none" onmouseover="speakElementDescription(this)" >Voice</button>
+            <button aria-label="button" id="email-voice-command" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none" onmouseover="speakElementDescription(this)" >Voice</button>
         </div>
         <div class="mb-4">
             <label for="description" class="block text-sm font-medium text-gray-700">Email Description</label>
             <input type="text" id="description" class="w-full py-2 px-3 border rounded outline-none" placeholder="Email Description">
-            <button id="description-voice-command" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none" onmouseover="speakElementDescription(this)"  >Voice</button>
+            <button aria-label="button" id="description-voice-command" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none" onmouseover="speakElementDescription(this)"  >Voice</button>
         </div>
-        <button id="send-button" class="w-full mt-4 bg-green-500 text-white py-3 px-4 rounded hover:bg-green-600 focus:outline-none" onmouseover="speakElementDescription(this)">
+        <button aria-label="button" id="send-button" class="w-full mt-4 bg-green-500 text-white py-3 px-4 rounded hover:bg-green-600 focus:outline-none" onmouseover="speakElementDescription(this)">
             Send Mail
         </button>
     </div>
 
     <script>
+
+//   https://developer.chrome.com/blog/voice-driven-web-apps-introduction-to-the-web-speech-api/
+
+
         const senderEmailInput = document.getElementById('senderEmail');
         const emailInput = document.getElementById('email');
         const descriptionInput = document.getElementById('description');
@@ -67,6 +71,9 @@
 
 
         // writing code for hover to speech
+        // https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis/speak
+
+
         function speak(text) {
             const utterance = new SpeechSynthesisUtterance(text);
             window.speechSynthesis.speak(utterance);
