@@ -11,11 +11,12 @@ def index():
     <html>
     <body>
         <h1>Click the button to listen the audio book:</h1>
-         <button onclick="runScript()">Object Oriented Programming</button>
-        <button onclick="runScript2()">Java Script</button>
+         <button onclick="runScript()">BOOK 1 - Object Oriented Programming</button>
+        <button onclick="runScript2()">BOOK 2 - Java Script</button>
+
         <div class="container">
         <input type="file" id="pdfUploader" accept=".pdf">
-        <button onclick="runScript()">Run</button>
+        <button onclick="runScript3()">Run</button>
     </div>
     <div id="output"></div>
 
@@ -115,6 +116,13 @@ button:focus {
                     .then(data => alert(data));
             }
         </script>
+        <script>
+            function runScript3() {
+                fetch('/run-script3')
+                    .then(response => response.text())
+                    .then(data => alert(data));
+            }
+        </script>
 
 
 
@@ -131,6 +139,12 @@ def run_script():
 @app.route('/run-script2')
 def run_script2():
     result = subprocess.run(['python', 'js.py'], capture_output=True, text=True)
+    return result.stdout
+
+
+@app.route('/run-script3')
+def run_script3():
+    result = subprocess.run(['python', 'dsa.py'], capture_output=True, text=True)
     return result.stdout
 
 
