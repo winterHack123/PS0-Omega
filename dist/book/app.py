@@ -18,6 +18,37 @@ def index():
         <button onclick="runScript()">Object Oriented Programming</button>
         <button onclick="runScript2()">Java Script</button>
 
+
+               <style>
+          h1 {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: #4CAF50;
+}
+
+button {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #005A6E;
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 5px 0px #4CAF50;
+}
+</style>
+
         <script>
             function runScript() {
                 fetch('/run-script')
