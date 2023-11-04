@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,8 +21,8 @@
                         <div class="flex justify-between w-full lg:w-auto">
                             <div class="flex items-center">
                                 <a href="/" class="flex items-center"><span
-                                        class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">&lt;Wesite
-                                        Name&gt;slogan</span></a>
+                                        class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">&lt;
+                                        Luminous&gt;Internet for all</span></a>
                             </div>
                             <div class="flex items-center lg:hidden">
                                 <a href="#" target="_blank"
@@ -129,9 +130,8 @@
                 <div class="py-4 px-4 mx-auto max-w-screen-xl">
                     <!-- // first daabba -->
                     <div class="grid gap-2 space-y-0 grid-cols-2 lg:grid-cols-4">
-                        <a class="bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 rounded-lg border border-gray-200 dark:border-gray-700 divide-gray-200 dark:divide-gray-700 shadow-md flex max-w-sm flex-col hover:bg-gray-100 dark:hover:bg-gray-700 p-4 sm:p-6 items-center text-center"
-                            href="#"><i
-                                class="icon-key mb-2 text-gray-500 dark:text-gray-400 text-4xl"></i>
+                        <a onmouseover="speakElementDescription(this)" class="bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 rounded-lg border border-gray-200 dark:border-gray-700 divide-gray-200 dark:divide-gray-700 shadow-md flex max-w-sm flex-col hover:bg-gray-100 dark:hover:bg-gray-700 p-4 sm:p-6 items-center text-center"
+                            href="#"><i class="icon-key mb-2 text-gray-500 dark:text-gray-400 text-4xl"></i>
                             <h5 class="text-lg font-semibold tracking-tight text-gray-900 dark:text-white">
                                 Book Reading
                             </h5>
@@ -139,15 +139,14 @@
 
                         <!-- //second dabba -->
 
-                        <a class="bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 rounded-lg border border-gray-200 dark:border-gray-700 divide-gray-200 dark:divide-gray-700 shadow-md flex max-w-sm flex-col hover:bg-gray-100 dark:hover:bg-gray-700 p-4 sm:p-6 items-center text-center"
-                            href="#"><i
-                                class="icon-palette mb-2 text-gray-500 dark:text-gray-400 text-4xl"></i>
+                        <a onmouseover="speakElementDescription(this)"  class="bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 rounded-lg border border-gray-200 dark:border-gray-700 divide-gray-200 dark:divide-gray-700 shadow-md flex max-w-sm flex-col hover:bg-gray-100 dark:hover:bg-gray-700 p-4 sm:p-6 items-center text-center"
+                            href="#"><i class="icon-palette mb-2 text-gray-500 dark:text-gray-400 text-4xl"></i>
                             <h5 class="text-lg font-semibold tracking-tight text-gray-900 dark:text-white">
                                 News
                             </h5>
                         </a>
                         <!-- //third dabba  -->
-                        <a class="bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 rounded-lg border border-gray-200 dark:border-gray-700 divide-gray-200 dark:divide-gray-700 shadow-md flex max-w-sm flex-col hover:bg-gray-100 dark:hover:bg-gray-700 p-4 sm:p-6 items-center text-center"
+                        <a onmouseover="speakElementDescription(this)" class="bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 rounded-lg border border-gray-200 dark:border-gray-700 divide-gray-200 dark:divide-gray-700 shadow-md flex max-w-sm flex-col hover:bg-gray-100 dark:hover:bg-gray-700 p-4 sm:p-6 items-center text-center"
                             href="/dummy-text-generator"><i
                                 class="icon-text-size mb-2 text-gray-500 dark:text-gray-400 text-4xl"></i>
                             <h5 class="text-lg font-semibold tracking-tight text-gray-900 dark:text-white">
@@ -155,7 +154,7 @@
                             </h5>
                         </a>
                         <!-- // fourth dabba  -->
-                        <a class="bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 rounded-lg border border-gray-200 dark:border-gray-700 divide-gray-200 dark:divide-gray-700 shadow-md flex max-w-sm flex-col hover:bg-gray-100 dark:hover:bg-gray-700 p-4 sm:p-6 items-center text-center"
+                        <a onmouseover="speakElementDescription(this)" class="bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 rounded-lg border border-gray-200 dark:border-gray-700 divide-gray-200 dark:divide-gray-700 shadow-md flex max-w-sm flex-col hover:bg-gray-100 dark:hover:bg-gray-700 p-4 sm:p-6 items-center text-center"
                             href="/dist/email.html"><i
                                 class="icon-shuffle mb-2 text-gray-500 dark:text-gray-400 text-4xl"></i>
                             <h5 class="text-lg font-semibold tracking-tight text-gray-900 dark:text-white">
@@ -182,6 +181,43 @@
             </ul>
         </footer>
     </div>
+
+    <script>
+
+        // writing code for hover to speech
+        function speak(text) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            window.speechSynthesis.speak(utterance);
+        }
+
+        function speakElementDescription(element) {
+            const description = element.getAttribute('aria-label');
+            const content = element.textContent;
+            speak(`${description}. ${content}`);
+        }
+
+        //keypress vala feature ky ly script
+        document.addEventListener('keydown', function(event) {
+            const key = event.key.toLowerCase();
+            if (key === 'h') {
+                window.location.href = 'index.html'; // Navigate to the Home page
+            } 
+            else if (key === 'b') {
+                window.location.href = 'book.html'; // Navigate to the Contact page
+            }
+            else if (key === 'n') {
+                window.location.href = 'news.html'; // Navigate to the Contact page
+            }
+            else if (key === 'm') {
+                window.location.href = 'music.html'; // Navigate to the Contact page
+            }
+            else if (key === 'e') {
+                window.location.href = 'email.html'; // Navigate to the Contact page
+            }
+        });
+
+
+    </script>
 </body>
 
 </html>
