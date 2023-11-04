@@ -8,6 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="emailjava" href="emailjava.js">
 </head>
+
+
 <body class="bg-gray-200 h-screen flex items-center justify-center">
     <div class="bg-white p-8 rounded shadow-md max-w-md mx-auto">
         <h1 class="text-2xl font-semibold mb-4">Send Mail using Voice</h1>
@@ -52,11 +54,12 @@
 
         function startVoiceRecognition(inputField) {
             recognition.onresult = function(event) {
-                const transcript = event.results[event.results.length - 1][0].transcript;
-                inputField.value = transcript;
-            };
+        const transcript = event.results[event.results.length - 1][0].transcript;
+        const cleanedTranscript = transcript.replace(/at the rate/g, '@'); // Replace "at the rate" with "@"
+        inputField.value = cleanedTranscript;
+    };
 
-            recognition.start();
+    recognition.start();
         }
 
         sendButton.addEventListener('click', sendMail);
@@ -87,4 +90,6 @@
 
     </script>
 </body>
+
+
 </html>
