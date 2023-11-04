@@ -14,5 +14,15 @@
             <button><img src="play.png" >Listen</button>
         </div>
     </div>
+
+    <script>
+        let speech = new SpeechSynthesisUtterance();
+
+        document.querySelector("button").addEventListener("click", () => {
+            speech.text = document.querySelector("textarea").value;
+            window.speechSynthesis.speak(speech);
+        });
+    </script>
+    
 </body>
 </html>
