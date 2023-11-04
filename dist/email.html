@@ -3,9 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="emailstyle.css">
+    <title>Email</title>
 </head>
-<body>
-    
+
+<!-- npx tailwindcss -i ./src/input.css -o ./dist/emailstyle.css --watch -->
+
+<body class="bg-gray-100 h-screen flex flex-col items-center justify-center">
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h1 class="text-2xl font-semibold text-gray-800 mb-4">Voice-Enabled Email Sender</h1>
+        <div id="output" class="text-lg text-gray-600 mb-4">Instructions will appear here...</div>
+        <button id="startButton" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300">Start Voice Command</button>
+    </div>
+
+    <script>
+        const startButton = document.getElementById('startButton');
+        const output = document.getElementById('output');
+
+        // Initialize the speech recognition object
+        const recognition = new window.SpeechRecognition();
+
+        recognition.onresult = (event) => {
+            const transcript = event.results[0][0].transcript;
+            output.innerHTML = `You said: ${transcript}`;
+            handleVoiceCommand(transcript);
+        };
+
+        startButton.addEventListener('click', () => {
+            recognition.start();
+            output.innerHTML = 'Listening...';
+        });
+
+        function handleVoiceCommand(command) {
+            // Add logic to interpret and act on voice commands here
+            // For this example, we will simply display the recognized command.
+            console.log(`Voice Command: ${command}`);
+        }
+    </script>
 </body>
+
+
 </html>
