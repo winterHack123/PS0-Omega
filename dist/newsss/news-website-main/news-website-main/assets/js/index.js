@@ -234,3 +234,68 @@ function showNewsFeed(newsFeedData) {
   });
 
 }
+
+// speech script
+function speak(text) {
+  const utterance = new SpeechSynthesisUtterance(text);
+  window.speechSynthesis.speak(utterance);
+}
+
+// speech script
+function speak(text) {
+  const utterance = new SpeechSynthesisUtterance(text);
+  window.speechSynthesis.speak(utterance);
+}
+
+function stopSpeaking() {
+  window.speechSynthesis.cancel();
+}
+
+function speakElementDescription(element) {
+  const description = element.getAttribute("aria-label");
+  const content = element.textContent;
+  speak(`${content}`);
+  // Add an event listener to stop speaking when the cursor leaves the element
+  element.addEventListener("mouseout", stopSpeaking);
+}
+
+
+// Function to add hover speech functionality to an element
+function addHoverSpeech(element) {
+  element.addEventListener("mouseenter", () => {
+    speakElementDescription(element);
+  });
+
+  element.addEventListener("mouseleave", stopSpeaking);
+}
+
+// Usage of addHoverSpeech function after fetching data
+const headlineNewsElements = document.querySelectorAll("#headlineNews span");
+const worldNewsUpdateElement = document.getElementById("worldNewsUpdate");
+const PoliticsElementFromHTML = document.getElementById("PoliticsElement");
+
+headlineNewsElements.forEach((element) => {
+  addHoverSpeech(element);
+});
+
+addHoverSpeech(worldNewsUpdateElement);
+addHoverSpeech(PoliticsElementFromHTML);
+
+
+
+// Function to add hover speech functionality to a parent element
+function addHoverSpeechToParent(parentElement) {
+  parentElement.addEventListener("mouseenter", (event) => {
+    const targetElement = event.target;
+    // if (targetElement.getAttribute("aria-label")) {
+    //   speakElementDescription(targetElement);
+    // }
+  });
+
+  parentElement.addEventListener("mouseleave", stopSpeaking);
+}
+
+// Usage of addHoverSpeechToParent function after fetching data
+const mainContentElement = document.getElementById("mainContent");
+
+addHoverSpeechToParent(mainContentElement);

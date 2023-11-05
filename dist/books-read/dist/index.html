@@ -51,9 +51,9 @@
         }
 
         function speakElementDescription(element) {
-            const description = element.getAttribute("aria-label");
+            // const description = element.getAttribute("aria-label");
             const content = element.textContent;
-            speak(`${content}. ${description}`);
+            speak(`${content}`);
             // Add an event listener to stop speaking when the cursor leaves the element
             element.addEventListener("mouseout", stopSpeaking);
         }
