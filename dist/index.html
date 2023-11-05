@@ -372,6 +372,11 @@
           window.location.href = "./email/email.html"; // Navigate to the Contact page
         }
       });
+
+        // Call the speak function when the website loads
+        window.addEventListener('load', function() {
+            speak('Welcome to our website. To Navigate on Email press E . Press N for News . Press M for Music . Press B for Book read  ');
+        });
     </script>
   </body>
 </html>
